@@ -47,3 +47,46 @@ html {
     -webkit-text-size-adjust: 100%;
     /* 2 */
 }
+
+body {
+    height: 100vh;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    overflow: hidden;
+}
+
+/* Gradient text code from https://cssgradient.io/blog/css-gradient-text/ */
+h1 {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 500;
+    font-size: 5em;
+    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(96, 88, 34));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    font-family: 'Changa', sans-serif;
+    font-size: 2em;
+    background: -webkit-linear-gradient(rgb(254, 254, 254), rgb(187, 187, 187));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.instructions {
+    width: 700px;
+}
+
+.grid {
+    height: 700px;
+    width: 700px;
+}
