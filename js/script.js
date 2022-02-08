@@ -19,7 +19,7 @@ const grid = document.querySelector('.game-grid')
 /**
  * This for loop creates the grid layout the game operates on
  */
-for (let i = 0; i < 368; i++) {
+for (let i = 0; i < 225; i++) {
     const square = document.createElement('div')
     grid.appendChild(square)
 }

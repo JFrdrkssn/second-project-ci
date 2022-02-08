@@ -97,8 +97,8 @@ p {
 }
 
 .game-grid {
-    height: 750px;
-    width: 750px;
+    height: 600px;
+    width: 600px;
     display: flex;
     flex: none;
     flex-wrap: wrap;
@@ -107,13 +107,19 @@ p {
 }
 
 .game-grid div {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
+    transform: scale(0.9);
 }
 
-/* https://www.flaticon.com/free-icons/spaceship" Spaceship icons created by Nhor Phai - Flaticon */
 .alien-enemies {
-    background-image: url(../images/aircraft.png);
+    background: -webkit-linear-gradient(rgb(133, 24, 24), rgb(240, 240, 240));
+    border: 4px inset rgb(182, 8, 8);
+    border-radius: 20px;
+}
+
+.ship {
+    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(96, 88, 34));
 }
 
 .score {
