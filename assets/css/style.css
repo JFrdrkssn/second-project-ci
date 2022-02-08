@@ -106,6 +106,16 @@ p {
     justify-content: center;
 }
 
+.game-grid div {
+    width: 32px;
+    height: 32px;
+}
+
+/* https://www.flaticon.com/free-icons/spaceship" Spaceship icons created by Nhor Phai - Flaticon */
+.alien-enemies {
+    background-image: url(../images/aircraft.png);
+}
+
 .score {
     width: 15%;
     flex: initial;
