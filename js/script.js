@@ -48,3 +48,5 @@ function draw() {
 }
 
 draw()
+
+squares[217].classList.add('ship')
