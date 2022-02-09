@@ -18,6 +18,7 @@ const grid = document.querySelector('.game-grid')
 
 // This is the width of the grid in terms of squares
 let width = 15
+
 // This is the starting position of the ship in the grid
 let shipPosition = 217
 
@@ -51,8 +52,20 @@ function draw() {
         squares[aliens[i]].classList.add('alien-enemies')
     }
 }
-
+// The function is called here
 draw()
+
+/**
+ * This function removes the aliens.
+ * It is called from the moveAlien.
+ * The funcionality is similar to the moveShip function,
+ * where the ship is removed from the previous grid square it was displayed when moved
+ */
+function remove() {
+    for (let i = 0; i < aliens.length; i++) {
+        squares[aliens[i]].classList.remove('alien-enemies')
+    }
+}
 
 // This code adds styling to ship from CSS class
 squares[shipPosition].classList.add('ship')
@@ -64,6 +77,7 @@ squares[shipPosition].classList.add('ship')
 function moveShip(event) {
     // This removes the ship from the current grid square
     squares[shipPosition].classList.remove('ship')
+
     // This switches the if statement depending on which key is pressed
     switch(event.key) {
         case 'ArrowLeft':
@@ -81,3 +95,28 @@ function moveShip(event) {
 
 // This eventListener calls the moveShip function on specific keydown events
 document.addEventListener('keydown', moveShip)
+
+/**
+ * This function declares the edges of the grid so no aliens "move" outside of it.
+ * It then loops through the array and adds 1 alien.
+ */
+function moveAlien() {
+    // The left edge is declared to be the first column in the grid
+    const leftEdge = aliens[0] % width === 0
+
+    // The right edge is declared to be the last column in the grid
+    const rightEdge = aliens[aliens.length - 1] % width === -1
+
+    // This calls the remove function
+    remove()
+
+    // This adds a new alien to the array, "moving" the aliens forward through the grid
+    for (i = 0; i < aliens.length; i++) {
+        aliens[i] += 1
+    }
+
+    draw()
+}
+
+// This sets the time interval for the aliens to move
+setInterval(moveAlien, 450)
