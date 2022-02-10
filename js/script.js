@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() { });
 */
 
 const grid = document.querySelector('.game-grid')
+const scoreDisplay = document.querySelector('.title')
 
 // This is the width of the grid in terms of squares
 let width = 15
@@ -143,15 +144,13 @@ function moveAlien() {
 
     draw()
 
-    if (squares[shipPosition].classList.contains('ship', 'aliens')) {
-
-        //add modal here later
-        console.log('game over')
+    if (squares[shipPosition].classList.contains('alien-enemies', 'ship')) {
+        scoreDisplay.innerHTML = 'GAME OVER'
         clearInterval(aliensId)
     }
 
 }
 
 // This sets the time interval for the aliens to move
-aliensID = setInterval(moveAlien, 450)
+aliensID = setInterval(moveAlien, 50)
 
