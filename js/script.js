@@ -124,7 +124,15 @@ function moveAlien() {
         aliens[i] += width + 1
         direction = -1
         goingRight = false
-    } 
+    }
+
+    // Opposite to above if statement
+    if (leftEdge && !goingRight) {
+        for (let i = 0; i < aliens.length; i++)
+        aliens[i] += width - 1
+        direction = 1
+        goingRight = true
+    }
 
     // This adds a new alien to the array, "moving" the aliens forward through the grid
     for (i = 0; i < aliens.length; i++) {
