@@ -217,5 +217,3 @@ function fire(event) {
 }
 
 document.addEventListener('keydown', fire)
-
-setTimeout(fire, 500)
