@@ -114,20 +114,25 @@ h2 {
 }
 
 .alien-enemies {
-    background: -webkit-linear-gradient(rgb(133, 24, 24), rgb(240, 240, 240));
-    border: 4px inset rgb(182, 8, 8);
-    border-radius: 20px;
+    background: -webkit-linear-gradient(rgb(146, 9, 174), rgb(4, 3, 3));
+    border: 15px inset rgb(54, 179, 64);
+    border-top: 10px groove rgb(114, 9, 111);
+    border-bottom: none;
+    border-radius: 15px;
 }
 
 .ship {
-    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(96, 88, 34));
+    background: -webkit-radial-gradient(rgb(0, 108, 203), rgb(59, 194, 169));
+    border: 15px outset rgb(225, 225, 225);
+    border-bottom: 10px dotted rgb(196, 111, 36);
+    border-radius: 10px;
 }
 
 .missile {
-    background: -webkit-radial-gradient(rgb(0, 108, 203), rgb(59, 194, 169));
-    border: 15px outset rgb(187, 187, 187);
-    border-bottom: 10px dotted rgb(196, 111, 36);
-    border-radius: 10px;
+    background: -webkit-radial-gradient(rgb(201, 38, 27), rgb(201, 126, 13));
+    border: 12px outset rgb(210, 198, 130);
+    border-bottom: 10px double rgb(2, 1, 1);
+    border-radius: 15px;
 }
 
 .explosion {

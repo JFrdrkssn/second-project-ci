@@ -175,8 +175,7 @@ function moveAlien() {
     }
 }
 // This sets the time interval for the aliens to move
-aliensID = setInterval(moveAlien, 200)
-
+aliensId = setInterval(moveAlien, 350)
 
 /**
  * This makes the ship fire a missile using space key
@@ -186,9 +185,9 @@ function fire(event) {
     let missilePosition = shipPosition
 
     function moveMissile() {
-        squares[missilePosition].classList.remove('missile')
+        squares[missilePosition].classList.remove('missile');
         missilePosition -= width
-        squares[missilePosition].classList.add('missile')
+        squares[missilePosition].classList.add('missile');
 
         if (squares[missilePosition].classList.contains('alien-enemies')) {
             squares[missilePosition].classList.remove('missile')
@@ -212,7 +211,7 @@ function fire(event) {
     // When pressing space key, missile is launched, moving one square in 100ms
     switch(event.key) {
         case ' ':
-            missileId = setInterval(moveMissile, 150)
+            missileId = setInterval(moveMissile, 200)
     }
 }
 
