@@ -30,6 +30,8 @@ let aliensId
 
 let goingRight = true
 
+let explosions = document.querySelector('.explosion')
+
 /**
  * This for loop creates the grid layout the game operates on
  */
@@ -173,8 +175,15 @@ function fire(event) {
         squares[missilePosition].classList.remove('missile')
         missilePosition -= width
         squares[missilePosition].classList.add('missile')
+
+        if (squares[missilePosition].classList.contains('alien-enemies')) {
+            squares[missilePosition].classList.remove('missile')
+            squares[missilePosition].classList.remove('alien-enemies')
+            squares[missilePosition].classList.add('explosion')
+        }
     }
 
+    // When pressing space key, missile is launched, moving one square in 100ms
     switch(event.key) {
         case ' ':
             missileId = setInterval(moveMissile, 100)

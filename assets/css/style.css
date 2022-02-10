@@ -130,6 +130,12 @@ h2 {
     border-radius: 10px;
 }
 
+.explosion {
+    background: -webkit-radial-gradient(rgb(169, 20, 20), rgb(116, 40, 128));
+    border: 10px dotted rgb(218, 139, 3);
+    border-radius: 15px;
+}
+
 .score {
     width: 15%;
     flex: initial;
