@@ -22,6 +22,13 @@ let width = 15
 // This is the starting position of the ship in the grid
 let shipPosition = 217
 
+// The direction the aliens move, 1 is forward in the grid. -1 would backwards.
+let direction = 1
+
+let aliensId
+
+let goingRight = true
+
 /**
  * This for loop creates the grid layout the game operates on
  */
@@ -58,7 +65,7 @@ draw()
 
 /**
  * This function removes the aliens.
- * It is called from the moveAlien.
+ * It is called from the moveAlien function.
  * The funcionality is similar to the moveShip function,
  * where the ship is removed from the previous grid square it was displayed when moved
  */
@@ -110,14 +117,23 @@ function moveAlien() {
 
     // This calls the remove function
     remove()
+    
+    // If aliens are on the right edge and going right, change moving direction to left
+    if (rightEdge && goingRight) {
+        for (let i = 0; i < aliens.length; i++)
+        aliens[i] += width + 1
+        direction = -1
+        goingRight = false
+    } 
 
     // This adds a new alien to the array, "moving" the aliens forward through the grid
     for (i = 0; i < aliens.length; i++) {
-        aliens[i] += 1
+        aliens[i] += direction
     }
 
     draw()
 }
 
 // This sets the time interval for the aliens to move
-setInterval(moveAlien, 450)
+aliensID = setInterval(moveAlien, 450)
+
