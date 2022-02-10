@@ -156,7 +156,7 @@ function moveAlien() {
 
     // When ship is hit by alien, display GAME OVER instead of title
     if (squares[shipPosition].classList.contains('alien-enemies', 'ship')) {
-        gameOverDisplay.innerHTML = 'GAME OVER'
+        winOrLoseDisplay.innerHTML = 'GAME OVER'
         clearInterval(aliensId)
     }
 
