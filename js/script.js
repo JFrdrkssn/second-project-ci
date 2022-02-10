@@ -28,6 +28,9 @@ let direction = 1
 
 let aliensId
 
+// Empty array since no enemies are dead
+let aliensDead = []
+
 let goingRight = true
 
 let explosions = document.querySelector('.explosion')
@@ -56,11 +59,15 @@ const aliens = [
 ]
 
 /**
- * This code adds styling from CSS class to the aliens array (enemies) above
+ * This code adds styling from CSS class to the aliens array (enemies) above.
+ * Wherever an alien has been removed from the grid, it does not draw that
+ * enemy on that position.
  */
 function draw() {
     for (let i = 0; i < aliens.length; i++) {
-        squares[aliens[i]].classList.add('alien-enemies')
+        if (!aliensDead.includes(i)) {
+            squares[aliens[i]].classList.add('alien-enemies')
+        }
     }
 }
 // The function is called here
@@ -165,7 +172,7 @@ aliensID = setInterval(moveAlien, 5000)
 
 
 /**
- * This makes the ship fire a missile on using space key
+ * This makes the ship fire a missile using space key
  */
 function fire(event) {
     let missileId
@@ -184,6 +191,10 @@ function fire(event) {
             // Missile stop moving and explosion time is set to 200ms
             setTimeout(()=> squares[missilePosition].classList.remove('explosion'), 200)
             clearInterval(missileId)
+
+            // Aliens are removed from the square where collision with missile happens
+            const alienDead = aliens.indexOf(missilePosition)
+            aliensDead.push(alienDead)
         }
     }
 
