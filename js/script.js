@@ -144,11 +144,19 @@ function moveAlien() {
 
     draw()
 
+    // When ship is hit by alien, display GAME OVER instead of title
     if (squares[shipPosition].classList.contains('alien-enemies', 'ship')) {
         scoreDisplay.innerHTML = 'GAME OVER'
         clearInterval(aliensId)
     }
 
+    // When aliens hit bottom, same as above if statement
+    for (let i = 0; i < aliens.length; i++) {
+        if (aliens[i] > (squares.length)) {
+            scoreDisplay.innerHTML = 'GAME OVER'
+            clearInterval(aliensId)
+        }
+    }
 }
 
 // This sets the time interval for the aliens to move
