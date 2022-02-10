@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", function() { });
 */
 
 const grid = document.querySelector('.game-grid')
-const scoreDisplay = document.querySelector('.title')
+const winOrLoseDisplay = document.querySelector('.title')
+const scoreDisplay = document.querySelector('.score-tally')
 
 // This is the width of the grid in terms of squares
 let width = 15
@@ -33,7 +34,7 @@ let aliensDead = []
 
 let goingRight = true
 
-let explosions = document.querySelector('.explosion')
+let score = 0
 
 /**
  * This for loop creates the grid layout the game operates on
@@ -155,20 +156,26 @@ function moveAlien() {
 
     // When ship is hit by alien, display GAME OVER instead of title
     if (squares[shipPosition].classList.contains('alien-enemies', 'ship')) {
-        scoreDisplay.innerHTML = 'GAME OVER'
+        gameOverDisplay.innerHTML = 'GAME OVER'
         clearInterval(aliensId)
     }
 
     // When aliens hit bottom, same as above if statement
     for (let i = 0; i < aliens.length; i++) {
         if (aliens[i] > (squares.length)) {
-            scoreDisplay.innerHTML = 'GAME OVER'
+            winOrLoseDisplay.innerHTML = 'GAME OVER'
             clearInterval(aliensId)
         }
     }
+
+    if (aliensDead.length === aliens.length) {
+        winOrLoseDisplay.innerHTML = 'VICTORY'
+        score += 100
+        clearInterval(aliensId)
+    }
 }
 // This sets the time interval for the aliens to move
-aliensID = setInterval(moveAlien, 5000)
+aliensID = setInterval(moveAlien, 200)
 
 
 /**
@@ -195,15 +202,20 @@ function fire(event) {
             // Aliens are removed from the square where collision with missile happens
             const alienDead = aliens.indexOf(missilePosition)
             aliensDead.push(alienDead)
+
+            // This increments the score with 10 for each enemy defeated
+            score += 10
+            scoreDisplay.innerHTML = score
         }
     }
 
     // When pressing space key, missile is launched, moving one square in 100ms
     switch(event.key) {
         case ' ':
-            missileId = setInterval(moveMissile, 100)
+            missileId = setInterval(moveMissile, 150)
     }
 }
 
 document.addEventListener('keydown', fire)
 
+setTimeout(fire, 500)
