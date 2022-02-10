@@ -24,7 +24,7 @@ let width = 15
 // This is the starting position of the ship in the grid
 let shipPosition = 217
 
-// The direction the aliens move, 1 is forward in the grid. -1 would backwards.
+// The direction the aliens move, 1 is forward in the grid, -1 is backwards
 let direction = 1
 
 let aliensId
@@ -80,7 +80,7 @@ draw()
  * The funcionality is similar to the moveShip function,
  * where the ship is removed from the previous grid square it was displayed when moved
  */
-function remove() {
+function removeAliens() {
     for (let i = 0; i < aliens.length; i++) {
         squares[aliens[i]].classList.remove('alien-enemies')
     }
@@ -127,7 +127,7 @@ function moveAlien() {
     const rightEdge = aliens[aliens.length - 1] % width === width -1
 
     // This calls the remove function
-    remove()
+    removeAliens()
     
     // If aliens are on the right edge and going right, change moving direction to left
     if (rightEdge && goingRight) {
@@ -157,6 +157,7 @@ function moveAlien() {
     // When ship is hit by alien, display GAME OVER instead of title
     if (squares[shipPosition].classList.contains('alien-enemies', 'ship')) {
         winOrLoseDisplay.innerHTML = 'GAME OVER'
+        squares[shipPosition].classList.remove('alien-enemies')
         clearInterval(aliensId)
     }
 
@@ -185,9 +186,11 @@ function fire(event) {
     let missilePosition = shipPosition
 
     function moveMissile() {
-        squares[missilePosition].classList.remove('missile');
+        if (!squares[missilePosition]) return
+        squares[missilePosition].classList.remove('missile')
         missilePosition -= width
-        squares[missilePosition].classList.add('missile');
+        if (!squares[missilePosition]) return
+        squares[missilePosition].classList.add('missile')
 
         if (squares[missilePosition].classList.contains('alien-enemies')) {
             squares[missilePosition].classList.remove('missile')
