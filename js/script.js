@@ -158,7 +158,28 @@ function moveAlien() {
         }
     }
 }
-
 // This sets the time interval for the aliens to move
-aliensID = setInterval(moveAlien, 50)
+aliensID = setInterval(moveAlien, 5000)
+
+
+/**
+ * This makes the ship fire a missile on using space key
+ */
+function fire(event) {
+    let missileId
+    let missilePosition = shipPosition
+
+    function moveMissile() {
+        squares[missilePosition].classList.remove('missile')
+        missilePosition -= width
+        squares[missilePosition].classList.add('missile')
+    }
+
+    switch(event.key) {
+        case ' ':
+            missileId = setInterval(moveMissile, 100)
+    }
+}
+
+document.addEventListener('keydown', fire)
 

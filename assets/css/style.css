@@ -123,6 +123,13 @@ h2 {
     background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(96, 88, 34));
 }
 
+.missile {
+    background: -webkit-radial-gradient(rgb(0, 108, 203), rgb(59, 194, 169));
+    border: 15px outset rgb(187, 187, 187);
+    border-bottom: 10px dotted rgb(196, 111, 36);
+    border-radius: 10px;
+}
+
 .score {
     width: 15%;
     flex: initial;
