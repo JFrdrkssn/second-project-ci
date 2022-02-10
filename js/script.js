@@ -113,25 +113,27 @@ function moveAlien() {
     const leftEdge = aliens[0] % width === 0
 
     // The right edge is declared to be the last column in the grid
-    const rightEdge = aliens[aliens.length - 1] % width === -1
+    const rightEdge = aliens[aliens.length - 1] % width === width -1
 
     // This calls the remove function
     remove()
     
     // If aliens are on the right edge and going right, change moving direction to left
     if (rightEdge && goingRight) {
-        for (let i = 0; i < aliens.length; i++)
-        aliens[i] += width + 1
-        direction = -1
-        goingRight = false
+        for (let i = 0; i < aliens.length; i++) {
+            aliens[i] += width +1
+            direction = -1
+            goingRight = false
+        }
     }
 
     // Opposite to above if statement
     if (leftEdge && !goingRight) {
-        for (let i = 0; i < aliens.length; i++)
-        aliens[i] += width - 1
-        direction = 1
-        goingRight = true
+        for (let i = 0; i < aliens.length; i++) {
+            aliens[i] += width -1
+            direction = 1
+            goingRight = true
+        }
     }
 
     // This adds a new alien to the array, "moving" the aliens forward through the grid
@@ -140,6 +142,14 @@ function moveAlien() {
     }
 
     draw()
+
+    if (squares[shipPosition].classList.contains('ship', 'aliens')) {
+
+        //add modal here later
+        console.log('game over')
+        clearInterval(aliensId)
+    }
+
 }
 
 // This sets the time interval for the aliens to move
