@@ -180,6 +180,10 @@ function fire(event) {
             squares[missilePosition].classList.remove('missile')
             squares[missilePosition].classList.remove('alien-enemies')
             squares[missilePosition].classList.add('explosion')
+
+            // Missile stop moving and explosion time is set to 200ms
+            setTimeout(()=> squares[missilePosition].classList.remove('explosion'), 200)
+            clearInterval(missileId)
         }
     }
 
