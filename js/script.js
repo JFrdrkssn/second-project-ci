@@ -15,7 +15,6 @@ function menu() {
   })
 }
 
-
 /**  The code basis for this game comes from
  *   this tutorial https://www.youtube.com/watch?v=3Nz4Yp7Y_uA
  *   Source code from Ania Kubow https://github.com/kubowania/space-invaders
