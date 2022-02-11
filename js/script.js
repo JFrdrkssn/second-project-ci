@@ -1,6 +1,5 @@
-window.addEventListener("load", menu)
+window.addEventListener("load", menu);
 
-const btnDisplay = document.querySelector("start-button")
 const grid = document.querySelector(".game-grid");
 const winOrLoseDisplay = document.querySelector(".title");
 const scoreDisplay = document.querySelector(".score-tally");
@@ -11,8 +10,8 @@ function menu() {
   grid.appendChild(startBtn);
   startBtn.addEventListener("click", () => {
     grid.removeChild(startBtn);
-    startGame()
-    winOrLoseDisplay.innerHTML = "RYMD INVASION"
+    startGame();
+    winOrLoseDisplay.innerHTML = "RYMD INVASION";
   })
 }
 
@@ -30,27 +29,25 @@ function menu() {
  *   Translation: Ofcourse you can use this for you project! Just make sure to say where you got this from :)
 */
 
-// This is the width of the grid in terms of squares
-let width = 15;
-
-// This is the starting position of the ship in the grid
-let shipPosition = 217;
-
-// The direction the aliens move, 1 is forward in the grid, -1 is backwards
-let direction = 1;
-
-let aliensId;
-
-// Empty array where dead enemies are stored
-let aliensDead = [];
-
-let goingRight = true;
-
-let score = 0;
-
-let gameEnd = false
 
 function startGame() {
+  // This is the width of the grid in terms of squares
+  let width = 15;
+
+  // This is the starting position of the ship in the grid
+  let shipPosition = 217;
+
+  // The direction the aliens move, 1 is forward in the grid, -1 is backwards
+  let direction = 1;
+
+  let aliensId;
+
+  // Empty array where dead enemies are stored
+  let aliensDead = [];
+
+  let goingRight = true;
+
+  let score = 0;
 
   /**
    * This function creates the grid layout the game operates on
@@ -180,6 +177,7 @@ function startGame() {
       squares[shipPosition].classList.remove("alien-enemies")
       clearInterval(aliensId)
       grid.innerHTML = ""
+      menu()
     }
 
     // When aliens hit bottom, same as above if statement
@@ -188,21 +186,22 @@ function startGame() {
         winOrLoseDisplay.innerHTML = "GAME OVER"
         clearInterval(aliensId)
         grid.innerHTML = ""
+        menu()
       }
     }
 
     // When all aliens are dead, declare victory
     if (aliensDead.length === aliens.length) {
-      console.log('Stuck in if statement because true')
+      aliensDead = []
       winOrLoseDisplay.innerHTML = "VICTORY"
-      score += 100
       clearInterval(aliensId)
       grid.innerHTML = ""
+      menu()
     }
   }
 
   // This sets the time interval for the aliens to move
-  aliensId = setInterval(moveAlien, 40)
+  aliensId = setInterval(moveAlien, 350)
 
   /**
   * This makes the ship fire a missile using space key
