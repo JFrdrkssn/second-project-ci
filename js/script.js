@@ -239,7 +239,7 @@ function startGame() {
 
     // When pressing space key, missile is launched, moving one square in 100ms
     switch(event.key) {
-      case " ":
+      case "ArrowUp":
         missileId = setInterval(moveMissile, 200)
     }
   }
