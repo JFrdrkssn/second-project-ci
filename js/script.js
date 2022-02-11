@@ -1,61 +1,66 @@
 document.addEventListener("DOMContentLoaded", function() { });
 
+const grid = document.querySelector(".game-grid");
+const winOrLoseDisplay = document.querySelector(".title");
+const scoreDisplay = document.querySelector(".score-tally");
 
-/*  The code basis for this game comes from
-    this tutorial https://www.youtube.com/watch?v=3Nz4Yp7Y_uA
-    Source code from Ania Kubow https://github.com/kubowania/space-invaders
-    MIT Licence
-    Copyright (c) 2020 Ania Kubow
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-    Translation: Ofcourse you can use this for you project! Just make sure to say where you got this from :)
+/**  The code basis for this game comes from
+ *   this tutorial https://www.youtube.com/watch?v=3Nz4Yp7Y_uA
+ *   Source code from Ania Kubow https://github.com/kubowania/space-invaders
+ *   MIT Licence
+ *   Copyright (c) 2020 Ania Kubow
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ *   Translation: Ofcourse you can use this for you project! Just make sure to say where you got this from :)
 */
 
-const grid = document.querySelector('.game-grid')
-const winOrLoseDisplay = document.querySelector('.title')
-const scoreDisplay = document.querySelector('.score-tally')
-
 // This is the width of the grid in terms of squares
-let width = 15
+let width = 15;
 
 // This is the starting position of the ship in the grid
-let shipPosition = 217
+let shipPosition = 217;
 
 // The direction the aliens move, 1 is forward in the grid, -1 is backwards
-let direction = 1
+let direction = 1;
 
-let aliensId
+let aliensId;
 
 // Empty array since no enemies are dead
-let aliensDead = []
+let aliensDead = [];
 
-let goingRight = true
+let goingRight = true;
 
-let score = 0
+let score = 0;
 
 /**
  * This for loop creates the grid layout the game operates on
  */
-for (let i = 0; i < 225; i++) {
-    const square = document.createElement('div')
-    grid.appendChild(square)
+
+function gameGrid() {
+    for (let i = 0; i < 225; i++) {
+        const square = document.createElement("div")
+        grid.appendChild(square)
+    }
 }
+
+gameGrid()
 
 /**
  * This variable provides the basis to iterate through the grid and and enemies
  */
-const squares = Array.from(document.querySelectorAll('.game-grid div'))
+const squares = Array.from(document.querySelectorAll(".game-grid div"))
 
 
 /**
  * This is the number of alien enemies and their position in the grid
  */
 const aliens = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
-    15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+    15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
     30, 31, 32, 33, 34, 35, 36, 37, 38, 39
 ]
 
@@ -67,7 +72,7 @@ const aliens = [
 function draw() {
     for (let i = 0; i < aliens.length; i++) {
         if (!aliensDead.includes(i)) {
-            squares[aliens[i]].classList.add('alien-enemies')
+            squares[aliens[i]].classList.add("alien-enemies")
         }
     }
 }
@@ -82,12 +87,12 @@ draw()
  */
 function removeAliens() {
     for (let i = 0; i < aliens.length; i++) {
-        squares[aliens[i]].classList.remove('alien-enemies')
+        squares[aliens[i]].classList.remove("alien-enemies")
     }
 }
 
 // This code adds styling to ship from CSS class
-squares[shipPosition].classList.add('ship')
+squares[shipPosition].classList.add("ship")
 
 
 /**
@@ -95,25 +100,25 @@ squares[shipPosition].classList.add('ship')
  */
 function moveShip(event) {
     // This removes the ship from the current grid square
-    squares[shipPosition].classList.remove('ship')
+    squares[shipPosition].classList.remove("ship")
 
     // This switches the if statement depending on which key is pressed
     switch(event.key) {
-        case 'ArrowLeft':
+        case "ArrowLeft":
             // If ship is not on the left edge of the grid, it can move left
             if (shipPosition % width !==0) shipPosition -=1
             break
-        case 'ArrowRight' :
+        case "ArrowRight" :
             // If ship is not on the right edge of the grid, it can move right
             if (shipPosition % width < width -1) shipPosition +=1
             break
     }
     // This draws in the ship on the new position
-    squares[shipPosition].classList.add('ship')
+    squares[shipPosition].classList.add("ship")
 }
 
 // This eventListener calls the moveShip function on specific keydown events
-document.addEventListener('keydown', moveShip)
+document.addEventListener("keydown", moveShip)
 
 /**
  * This function declares the edges of the grid so no aliens "move" outside of it.
@@ -128,7 +133,7 @@ function moveAlien() {
 
     // This calls the remove function
     removeAliens()
-    
+
     // If aliens are on the right edge and going right, change moving direction to left
     if (rightEdge && goingRight) {
         for (let i = 0; i < aliens.length; i++) {
@@ -155,16 +160,16 @@ function moveAlien() {
     draw()
 
     // When ship is hit by alien, display GAME OVER instead of title
-    if (squares[shipPosition].classList.contains('alien-enemies', 'ship')) {
-        winOrLoseDisplay.innerHTML = 'GAME OVER'
-        squares[shipPosition].classList.remove('alien-enemies')
+    if (squares[shipPosition].classList.contains("alien-enemies", "ship")) {
+        winOrLoseDisplay.innerHTML = "GAME OVER"
+        squares[shipPosition].classList.remove("alien-enemies")
         clearInterval(aliensId)
     }
 
     // When aliens hit bottom, same as above if statement
     for (let i = 0; i < aliens.length; i++) {
         if (aliens[i] > (squares.length)) {
-            winOrLoseDisplay.innerHTML = 'GAME OVER'
+            winOrLoseDisplay.innerHTML = "GAME OVER"
             clearInterval(aliensId)
         }
     }
@@ -186,19 +191,20 @@ function fire(event) {
     let missilePosition = shipPosition
 
     function moveMissile() {
+        //This if statement solved an infinite loop bug
         if (!squares[missilePosition]) return
-        squares[missilePosition].classList.remove('missile')
+        squares[missilePosition].classList.remove("missile")
         missilePosition -= width
         if (!squares[missilePosition]) return
-        squares[missilePosition].classList.add('missile')
+        squares[missilePosition].classList.add("missile")
 
-        if (squares[missilePosition].classList.contains('alien-enemies')) {
-            squares[missilePosition].classList.remove('missile')
-            squares[missilePosition].classList.remove('alien-enemies')
-            squares[missilePosition].classList.add('explosion')
+        if (squares[missilePosition].classList.contains("alien-enemies")) {
+            squares[missilePosition].classList.remove("missile")
+            squares[missilePosition].classList.remove("alien-enemies")
+            squares[missilePosition].classList.add("explosion")
 
             // Missile stop moving and explosion time is set to 200ms
-            setTimeout(()=> squares[missilePosition].classList.remove('explosion'), 200)
+            setTimeout(()=> squares[missilePosition].classList.remove("explosion"), 200)
             clearInterval(missileId)
 
             // Aliens are removed from the square where collision with missile happens
@@ -213,9 +219,9 @@ function fire(event) {
 
     // When pressing space key, missile is launched, moving one square in 100ms
     switch(event.key) {
-        case ' ':
+        case " ":
             missileId = setInterval(moveMissile, 200)
     }
 }
 
-document.addEventListener('keydown', fire)
+document.addEventListener("keydown", fire)
