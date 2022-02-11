@@ -26,24 +26,28 @@
     </header>
 
     <!-- Game area -->
-    <section class="game-area">
+    <div class="game-area">
 
       <!-- Instructions -->
-      <div class="instructions">
-        <p>
-          Press "space key" to fire!<br>
-          Use "arrow keys" to move!
-        </p>
-      </div>
+      <section class="instructions">
+        <h2>
+          Move<br>
+          <i class="fas fa-arrow-left"></i> <i class="fas fa-arrow-right"></i>
+        </h2>
+        <h2>
+          Fire<br>
+          <i class="fas fa-arrow-up"></i>
+        </h2>
+      </section>
 
       <!-- Game -->
-      <div class="game-grid"></div>
+      <section class="game-grid"></section>
 
       <!-- Score -->
-      <div class="score">
+      <section class="score">
         <h2 class="score-tally">0</h2>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 
   <script src="js/script.js"></script>
