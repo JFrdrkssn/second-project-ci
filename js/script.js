@@ -1,8 +1,20 @@
-document.addEventListener("DOMContentLoaded", function() { });
+window.addEventListener("load", menu)
 
+const btnDisplay = document.querySelector("start-button")
 const grid = document.querySelector(".game-grid");
 const winOrLoseDisplay = document.querySelector(".title");
 const scoreDisplay = document.querySelector(".score-tally");
+
+function menu() {
+  let startBtn = document.createElement("button");
+  startBtn.innerHTML = "SAVE HUMANITY";
+  grid.appendChild(startBtn);
+  startBtn.addEventListener("click", () => {
+    grid.removeChild(startBtn);
+    startGame()
+  })
+  
+}
 
 
 /**  The code basis for this game comes from
@@ -29,76 +41,77 @@ let direction = 1;
 
 let aliensId;
 
-// Empty array since no enemies are dead
+// Empty array where dead enemies are stored
 let aliensDead = [];
 
 let goingRight = true;
 
 let score = 0;
 
-/**
- * This for loop creates the grid layout the game operates on
- */
+function startGame() {
 
-function gameGrid() {
+  /**
+   * This function creates the grid layout the game operates on
+   */
+  function gameGrid() {
     for (let i = 0; i < 225; i++) {
         const square = document.createElement("div")
         grid.appendChild(square)
     }
-}
+  }
 
-gameGrid()
+  gameGrid()
 
-/**
- * This variable provides the basis to iterate through the grid and and enemies
- */
-const squares = Array.from(document.querySelectorAll(".game-grid div"))
+  /**
+  * This variable provides the basis to iterate through the grid and and enemies
+  */
+  const squares = Array.from(document.querySelectorAll(".game-grid div"))
 
 
-/**
- * This is the number of alien enemies and their position in the grid
- */
-const aliens = [
+  /**
+  * This is the number of alien enemies and their position in the grid
+  */
+  const aliens = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
     15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
     30, 31, 32, 33, 34, 35, 36, 37, 38, 39
-]
+  ]
 
-/**
- * This code adds styling from CSS class to the aliens array (enemies) above.
- * Wherever an alien has been removed from the grid, it does not draw that
- * enemy on that position.
- */
-function draw() {
+  /**
+  * This code adds styling from CSS class to the aliens array (enemies) above.
+  * Wherever an alien has been removed from the grid, it does not draw that
+  * enemy on that position.
+  */
+  function draw() {
     for (let i = 0; i < aliens.length; i++) {
         if (!aliensDead.includes(i)) {
             squares[aliens[i]].classList.add("alien-enemies")
         }
     }
-}
-// The function is called here
-draw()
+  }
 
-/**
- * This function removes the aliens.
- * It is called from the moveAlien function.
- * The funcionality is similar to the moveShip function,
- * where the ship is removed from the previous grid square it was displayed when moved
- */
-function removeAliens() {
+  draw()
+
+  /**
+  * This function removes the aliens.
+  * It is called from the moveAlien function.
+  * The funcionality is similar to the moveShip function,
+  * where the ship is removed from the previous grid square it was displayed when moved
+  */
+  function removeAliens() {
     for (let i = 0; i < aliens.length; i++) {
         squares[aliens[i]].classList.remove("alien-enemies")
     }
-}
+  }
 
-// This code adds styling to ship from CSS class
-squares[shipPosition].classList.add("ship")
+  // This code adds styling to ship from CSS class
+  squares[shipPosition].classList.add("ship")
 
 
-/**
- * This function makes the ship move left or right depending on key used
- */
-function moveShip(event) {
+  /**
+  * This function makes the ship move left or right depending on key used
+  */
+  function moveShip(event) {
     // This removes the ship from the current grid square
     squares[shipPosition].classList.remove("ship")
 
@@ -115,16 +128,16 @@ function moveShip(event) {
     }
     // This draws in the ship on the new position
     squares[shipPosition].classList.add("ship")
-}
+  }
 
-// This eventListener calls the moveShip function on specific keydown events
-document.addEventListener("keydown", moveShip)
+  // This eventListener calls the moveShip function on specific keydown events
+  document.addEventListener("keydown", moveShip)
 
-/**
- * This function declares the edges of the grid so no aliens "move" outside of it.
- * It then loops through the array and adds 1 alien.
- */
-function moveAlien() {
+  /**
+  * This function declares the edges of the grid so no aliens "move" outside of it.
+  * It then loops through the array and adds 1 alien.
+  */
+  function moveAlien() {
     // The left edge is declared to be the first column in the grid
     const leftEdge = aliens[0] % width === 0
 
@@ -179,14 +192,14 @@ function moveAlien() {
         score += 100
         clearInterval(aliensId)
     }
-}
-// This sets the time interval for the aliens to move
-aliensId = setInterval(moveAlien, 350)
+  }
+  // This sets the time interval for the aliens to move
+  aliensId = setInterval(moveAlien, 350)
 
-/**
- * This makes the ship fire a missile using space key
- */
-function fire(event) {
+  /**
+  * This makes the ship fire a missile using space key
+  */
+  function fire(event) {
     let missileId
     let missilePosition = shipPosition
 
@@ -222,6 +235,7 @@ function fire(event) {
         case " ":
             missileId = setInterval(moveMissile, 200)
     }
-}
+  }
 
-document.addEventListener("keydown", fire)
+  document.addEventListener("keydown", fire)
+}

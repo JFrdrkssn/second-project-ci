@@ -5,10 +5,10 @@
 /* General CSS */
 
 * {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 /**
@@ -20,10 +20,10 @@
 code,
 kbd,
 samp {
-    font-family: monospace, monospace;
-    /* 1 */
-    font-size: 1em;
-    /* 2 */
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
 }
 
 /**
@@ -32,7 +32,7 @@ samp {
  */
 
 small {
-    font-size: 80%;
+  font-size: 80%;
 }
 
 /**
@@ -42,107 +42,123 @@ small {
  */
 
 html {
-    line-height: 1.15;
-    /* 1 */
-    -webkit-text-size-adjust: 100%;
-    /* 2 */
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
 }
 
 /* Background code from https://codepen.io/saransh/pen/LYGbwj */
 body {
-    height: 100vh;
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-    overflow: hidden;
+  height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  overflow: hidden;
 }
 
 /* Gradient text code from https://cssgradient.io/blog/css-gradient-text/ */
 header {
-    font-family: 'Chakra Petch', sans-serif;
-    font-weight: 500;
-    font-size: 3em;
-    background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(96, 88, 34));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 5%;
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 500;
+  font-size: 3em;
+  background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(96, 88, 34));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 5%;
 }
 
 p,
 h2 {
-    font-family: 'Changa', sans-serif;
-    font-size: 2em;
-    background: -webkit-linear-gradient(rgb(254, 254, 254), rgb(187, 187, 187));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  font-family: 'Changa', sans-serif;
+  font-size: 2em;
+  background: -webkit-linear-gradient(rgb(254, 254, 254), rgb(187, 187, 187));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .flex-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
 }
 
 .game-area {
-    width: 90%;
-    min-height: 792px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  width: 90%;
+  min-height: 792px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .instructions {
-    width: 15%;
-    flex: initial;
+  width: 15%;
+  flex: initial;
+}
+
+button {
+  width: 400px;
+  height: 400px;
+  margin: 100px 0;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 3em;
+  background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(94, 197, 235));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-top: 25px ridge rgb(210, 210, 210);
+  border-bottom: 25px ridge rgb(210, 210, 210);
+  border-left: 15px ridge rgb(222, 222, 222);
+  border-right: 15px ridge rgb(222, 222, 222);
+  border-radius: 150px;
 }
 
 .game-grid {
-    height: 600px;
-    width: 600px;
-    display: flex;
-    flex: none;
-    flex-wrap: wrap;
-    margin: 10px;
-    justify-content: center;
+  height: 600px;
+  width: 600px;
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  margin: 10px;
+  justify-content: center;
 }
 
 .game-grid div {
-    width: 40px;
-    height: 40px;
-    transform: scale(0.9);
+  width: 40px;
+  height: 40px;
+  transform: scale(0.9);
 }
 
 .alien-enemies {
-    background: -webkit-linear-gradient(rgb(146, 9, 174), rgb(4, 3, 3));
-    border: 15px inset rgb(54, 179, 64);
-    border-top: 10px groove rgb(114, 9, 111);
-    border-bottom: none;
-    border-radius: 15px;
+  background: -webkit-linear-gradient(rgb(146, 9, 174), rgb(4, 3, 3));
+  border: 15px inset rgb(54, 179, 64);
+  border-top: 10px groove rgb(114, 9, 111);
+  border-bottom: none;
+  border-radius: 15px;
 }
 
 .ship {
-    background: -webkit-radial-gradient(rgb(0, 108, 203), rgb(59, 194, 169));
-    border: 15px outset rgb(225, 225, 225);
-    border-bottom: 10px dotted rgb(196, 111, 36);
-    border-radius: 10px;
+  background: -webkit-radial-gradient(rgb(0, 108, 203), rgb(59, 194, 169));
+  border: 15px outset rgb(225, 225, 225);
+  border-bottom: 10px dotted rgb(196, 111, 36);
+  border-radius: 10px;
 }
 
 .missile {
-    background: -webkit-radial-gradient(rgb(201, 38, 27), rgb(201, 126, 13));
-    border: 12px outset rgb(210, 198, 130);
-    border-bottom: 10px double rgb(2, 1, 1);
-    border-radius: 15px;
+  background: -webkit-radial-gradient(rgb(201, 38, 27), rgb(201, 126, 13));
+  border: 12px outset rgb(210, 198, 130);
+  border-bottom: 10px double rgb(2, 1, 1);
+  border-radius: 15px;
 }
 
 .explosion {
-    background: -webkit-radial-gradient(rgb(169, 20, 20), rgb(116, 40, 128));
-    border: 10px dotted rgb(218, 139, 3);
-    border-radius: 15px;
+  background: -webkit-radial-gradient(rgb(169, 20, 20), rgb(116, 40, 128));
+  border: 10px dotted rgb(218, 139, 3);
+  border-radius: 15px;
 }
 
 .score {
-    width: 15%;
-    flex: initial;
-    font-size: 2em;
+  width: 15%;
+  flex: initial;
+  font-size: 2em;
 }
