@@ -12,8 +12,8 @@ function menu() {
   startBtn.addEventListener("click", () => {
     grid.removeChild(startBtn);
     startGame()
+    winOrLoseDisplay.innerHTML = "RYMD INVASION"
   })
-  
 }
 
 
@@ -48,6 +48,8 @@ let goingRight = true;
 
 let score = 0;
 
+let gameEnd = false
+
 function startGame() {
 
   /**
@@ -55,8 +57,8 @@ function startGame() {
    */
   function gameGrid() {
     for (let i = 0; i < 225; i++) {
-        const square = document.createElement("div")
-        grid.appendChild(square)
+      const square = document.createElement("div")
+      grid.appendChild(square)
     }
   }
 
@@ -84,9 +86,9 @@ function startGame() {
   */
   function draw() {
     for (let i = 0; i < aliens.length; i++) {
-        if (!aliensDead.includes(i)) {
-            squares[aliens[i]].classList.add("alien-enemies")
-        }
+      if (!aliensDead.includes(i)) {
+        squares[aliens[i]].classList.add("alien-enemies")
+      }
     }
   }
 
@@ -100,7 +102,7 @@ function startGame() {
   */
   function removeAliens() {
     for (let i = 0; i < aliens.length; i++) {
-        squares[aliens[i]].classList.remove("alien-enemies")
+      squares[aliens[i]].classList.remove("alien-enemies")
     }
   }
 
@@ -117,14 +119,14 @@ function startGame() {
 
     // This switches the if statement depending on which key is pressed
     switch(event.key) {
-        case "ArrowLeft":
-            // If ship is not on the left edge of the grid, it can move left
-            if (shipPosition % width !==0) shipPosition -=1
-            break
-        case "ArrowRight" :
-            // If ship is not on the right edge of the grid, it can move right
-            if (shipPosition % width < width -1) shipPosition +=1
-            break
+      case "ArrowLeft":
+        // If ship is not on the left edge of the grid, it can move left
+        if (shipPosition % width !==0) shipPosition -=1
+        break
+      case "ArrowRight" :
+        // If ship is not on the right edge of the grid, it can move right
+        if (shipPosition % width < width -1) shipPosition +=1
+        break
     }
     // This draws in the ship on the new position
     squares[shipPosition].classList.add("ship")
@@ -149,52 +151,58 @@ function startGame() {
 
     // If aliens are on the right edge and going right, change moving direction to left
     if (rightEdge && goingRight) {
-        for (let i = 0; i < aliens.length; i++) {
-            aliens[i] += width +1
-            direction = -1
-            goingRight = false
-        }
+      for (let i = 0; i < aliens.length; i++) {
+        aliens[i] += width +1
+          direction = -1
+          goingRight = false
+      }
     }
 
     // Opposite to above if statement
     if (leftEdge && !goingRight) {
-        for (let i = 0; i < aliens.length; i++) {
-            aliens[i] += width -1
-            direction = 1
-            goingRight = true
-        }
+      for (let i = 0; i < aliens.length; i++) {
+        aliens[i] += width -1
+        direction = 1
+        goingRight = true
+      }
     }
 
     // This adds a new alien to the array, "moving" the aliens forward through the grid
     for (i = 0; i < aliens.length; i++) {
-        aliens[i] += direction
+      aliens[i] += direction
     }
 
     draw()
 
     // When ship is hit by alien, display GAME OVER instead of title
     if (squares[shipPosition].classList.contains("alien-enemies", "ship")) {
-        winOrLoseDisplay.innerHTML = "GAME OVER"
-        squares[shipPosition].classList.remove("alien-enemies")
-        clearInterval(aliensId)
+      winOrLoseDisplay.innerHTML = "GAME OVER"
+      squares[shipPosition].classList.remove("alien-enemies")
+      clearInterval(aliensId)
+      grid.innerHTML = ""
     }
 
     // When aliens hit bottom, same as above if statement
     for (let i = 0; i < aliens.length; i++) {
-        if (aliens[i] > (squares.length)) {
-            winOrLoseDisplay.innerHTML = "GAME OVER"
-            clearInterval(aliensId)
-        }
+      if (aliens[i] > (squares.length)) {
+        winOrLoseDisplay.innerHTML = "GAME OVER"
+        clearInterval(aliensId)
+        grid.innerHTML = ""
+      }
     }
 
+    // When all aliens are dead, declare victory
     if (aliensDead.length === aliens.length) {
-        winOrLoseDisplay.innerHTML = 'VICTORY'
-        score += 100
-        clearInterval(aliensId)
+      console.log('Stuck in if statement because true')
+      winOrLoseDisplay.innerHTML = "VICTORY"
+      score += 100
+      clearInterval(aliensId)
+      grid.innerHTML = ""
     }
   }
+
   // This sets the time interval for the aliens to move
-  aliensId = setInterval(moveAlien, 350)
+  aliensId = setInterval(moveAlien, 40)
 
   /**
   * This makes the ship fire a missile using space key
@@ -204,36 +212,36 @@ function startGame() {
     let missilePosition = shipPosition
 
     function moveMissile() {
-        //This if statement solved an infinite loop bug
-        if (!squares[missilePosition]) return
+      //This if statement solved an infinite loop bug
+      if (!squares[missilePosition]) return
+      squares[missilePosition].classList.remove("missile")
+      missilePosition -= width
+      if (!squares[missilePosition]) return
+      squares[missilePosition].classList.add("missile")
+
+      if (squares[missilePosition].classList.contains("alien-enemies")) {
         squares[missilePosition].classList.remove("missile")
-        missilePosition -= width
-        if (!squares[missilePosition]) return
-        squares[missilePosition].classList.add("missile")
+        squares[missilePosition].classList.remove("alien-enemies")
+        squares[missilePosition].classList.add("explosion")
 
-        if (squares[missilePosition].classList.contains("alien-enemies")) {
-            squares[missilePosition].classList.remove("missile")
-            squares[missilePosition].classList.remove("alien-enemies")
-            squares[missilePosition].classList.add("explosion")
+        // Missile stop moving and explosion time is set to 200ms
+        setTimeout(()=> squares[missilePosition].classList.remove("explosion"), 200)
+        clearInterval(missileId)
 
-            // Missile stop moving and explosion time is set to 200ms
-            setTimeout(()=> squares[missilePosition].classList.remove("explosion"), 200)
-            clearInterval(missileId)
+        // Aliens are removed from the square where collision with missile happens
+        const alienDead = aliens.indexOf(missilePosition)
+        aliensDead.push(alienDead)
 
-            // Aliens are removed from the square where collision with missile happens
-            const alienDead = aliens.indexOf(missilePosition)
-            aliensDead.push(alienDead)
-
-            // This increments the score with 10 for each enemy defeated
-            score += 10
-            scoreDisplay.innerHTML = score
-        }
+        // This increments the score with 10 for each enemy defeated
+        score += 10
+        scoreDisplay.innerHTML = score
+      }
     }
 
     // When pressing space key, missile is launched, moving one square in 100ms
     switch(event.key) {
-        case " ":
-            missileId = setInterval(moveMissile, 200)
+      case " ":
+        missileId = setInterval(moveMissile, 200)
     }
   }
 
