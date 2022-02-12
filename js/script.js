@@ -181,7 +181,7 @@ function startGame() {
 
     // When aliens hit bottom, same as above if statement
     for (let i = 0; i < aliens.length; i++) {
-      if (aliens[i] > (squares.length)) {
+      if (aliens[i] >= 224) {
         winOrLoseDisplay.innerHTML = "GAME OVER"
         clearInterval(aliensId)
         grid.innerHTML = ""
