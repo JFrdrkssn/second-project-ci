@@ -2,6 +2,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500&family=Changa:wght@200&display=swap');
 
+h2 {
+  font-family: 'Changa', sans-serif;
+  font-size: 3.2em;
+  background: -webkit-linear-gradient(rgb(254, 254, 254), rgb(187, 187, 187));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 20px;
+}
+
 /* General CSS */
 
 * {
@@ -56,6 +65,16 @@ body {
   overflow: hidden;
 }
 
+/* Wrapper for all content */
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
 /* Gradient text code from https://cssgradient.io/blog/css-gradient-text/ */
 header {
   font-family: 'Chakra Petch', sans-serif;
@@ -67,28 +86,7 @@ header {
   margin: 5%;
 }
 
-h2 {
-  font-family: 'Changa', sans-serif;
-  font-size: 3.2em;
-  background: -webkit-linear-gradient(rgb(254, 254, 254), rgb(187, 187, 187));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  padding: 20px;
-}
-
-i {
-  font-size: 1.2em;
-}
-
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-}
-
+/* Game area */
 .game-area {
   width: 90%;
   height: 792px;
@@ -101,6 +99,10 @@ i {
   width: 15%;
   flex: initial;
   align-content: space-between;
+}
+
+i {
+  font-size: 1.2em;
 }
 
 button {
@@ -173,6 +175,8 @@ button {
   display: none;
 }
 
+
+/* Media query for tablet */
 @media screen and (max-width: 1200px) {
   .game-area {
     width: 100vw;
@@ -193,7 +197,7 @@ button {
   }
 }
 
-
+/* Media query for mobile */
 @media screen and (max-width: 767px) {
 
   .instructions,

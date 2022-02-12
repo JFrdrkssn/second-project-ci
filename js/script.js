@@ -53,17 +53,17 @@ function startGame() {
    */
   function gameGrid() {
     for (let i = 0; i < 225; i++) {
-      const square = document.createElement("div")
-      grid.appendChild(square)
+      const square = document.createElement("div");
+      grid.appendChild(square);
     }
   }
 
-  gameGrid()
+  gameGrid();
 
   /**
   * This variable provides the basis to iterate through the grid and and enemies
   */
-  const squares = Array.from(document.querySelectorAll(".game-grid div"))
+  const squares = Array.from(document.querySelectorAll(".game-grid div"));
 
 
   /**
@@ -73,7 +73,7 @@ function startGame() {
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
     15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
     30, 31, 32, 33, 34, 35, 36, 37, 38, 39
-  ]
+  ];
 
   /**
   * This code adds styling from CSS class to the aliens array (enemies) above.
@@ -83,12 +83,12 @@ function startGame() {
   function draw() {
     for (let i = 0; i < aliens.length; i++) {
       if (!aliensDead.includes(i)) {
-        squares[aliens[i]].classList.add("alien-enemies")
+        squares[aliens[i]].classList.add("alien-enemies");
       }
     }
   }
 
-  draw()
+  draw();
 
   /**
   * This function removes the aliens.
@@ -98,12 +98,12 @@ function startGame() {
   */
   function removeAliens() {
     for (let i = 0; i < aliens.length; i++) {
-      squares[aliens[i]].classList.remove("alien-enemies")
+      squares[aliens[i]].classList.remove("alien-enemies");
     }
   }
 
   // This code adds styling to ship from CSS class
-  squares[shipPosition].classList.add("ship")
+  squares[shipPosition].classList.add("ship");
 
 
   /**
@@ -111,25 +111,25 @@ function startGame() {
   */
   function moveShip(event) {
     // This removes the ship from the current grid square
-    squares[shipPosition].classList.remove("ship")
+    squares[shipPosition].classList.remove("ship");
 
     // This switches the if statement depending on which key is pressed
     switch(event.key) {
       case "ArrowLeft":
         // If ship is not on the left edge of the grid, it can move left
-        if (shipPosition % width !==0) shipPosition -=1
-        break
+        if (shipPosition % width !==0) shipPosition -=1;
+        break;
       case "ArrowRight" :
         // If ship is not on the right edge of the grid, it can move right
-        if (shipPosition % width < width -1) shipPosition +=1
-        break
+        if (shipPosition % width < width -1) shipPosition +=1;
+        break;
     }
     // This draws in the ship on the new position
-    squares[shipPosition].classList.add("ship")
+    squares[shipPosition].classList.add("ship");
   }
 
   // This eventListener calls the moveShip function on specific keydown events
-  document.addEventListener("keydown", moveShip)
+  document.addEventListener("keydown", moveShip);
 
   /**
   * This function declares the edges of the grid so no aliens "move" outside of it.
@@ -137,111 +137,111 @@ function startGame() {
   */
   function moveAlien() {
     // The left edge is declared to be the first column in the grid
-    const leftEdge = aliens[0] % width === 0
+    const leftEdge = aliens[0] % width === 0;
 
     // The right edge is declared to be the last column in the grid
-    const rightEdge = aliens[aliens.length - 1] % width === width -1
+    const rightEdge = aliens[aliens.length - 1] % width === width -1;
 
     // This calls the remove function
-    removeAliens()
+    removeAliens();
 
     // If aliens are on the right edge and going right, change moving direction to left
     if (rightEdge && goingRight) {
       for (let i = 0; i < aliens.length; i++) {
-        aliens[i] += width +1
-          direction = -1
-          goingRight = false
+        aliens[i] += width +1;
+          direction = -1;
+          goingRight = false;
       }
     }
 
     // Opposite to above if statement
     if (leftEdge && !goingRight) {
       for (let i = 0; i < aliens.length; i++) {
-        aliens[i] += width -1
-        direction = 1
-        goingRight = true
+        aliens[i] += width -1;
+        direction = 1;
+        goingRight = true;
       }
     }
 
     // This adds a new alien to the array, "moving" the aliens forward through the grid
-    for (i = 0; i < aliens.length; i++) {
-      aliens[i] += direction
+    for (let i = 0; i < aliens.length; i++) {
+      aliens[i] += direction;
     }
 
-    draw()
+    draw();
 
     // When ship is hit by alien, display GAME OVER instead of title
     if (squares[shipPosition].classList.contains("alien-enemies", "ship")) {
-      winOrLoseDisplay.innerHTML = "GAME OVER"
-      squares[shipPosition].classList.remove("alien-enemies")
-      clearInterval(aliensId)
-      grid.innerHTML = ""
-      menu()
+      winOrLoseDisplay.innerHTML = "GAME OVER";
+      squares[shipPosition].classList.remove("alien-enemies");
+      clearInterval(aliensId);
+      grid.innerHTML = "";
+      menu();
     }
 
     // When aliens hit bottom, same as above if statement
     for (let i = 0; i < aliens.length; i++) {
       if (aliens[i] >= 224) {
-        winOrLoseDisplay.innerHTML = "GAME OVER"
-        clearInterval(aliensId)
-        grid.innerHTML = ""
-        menu()
+        winOrLoseDisplay.innerHTML = "GAME OVER";
+        clearInterval(aliensId);
+        grid.innerHTML = "";
+        menu();
       }
     }
 
     // When all aliens are dead, declare victory
     if (aliensDead.length === aliens.length) {
-      aliensDead = []
-      winOrLoseDisplay.innerHTML = "VICTORY"
-      clearInterval(aliensId)
-      grid.innerHTML = ""
-      menu()
+      aliensDead = [];
+      winOrLoseDisplay.innerHTML = "VICTORY";
+      clearInterval(aliensId);
+      grid.innerHTML = "";
+      menu();
     }
   }
 
   // This sets the time interval for the aliens to move
-  aliensId = setInterval(moveAlien, 350)
+  aliensId = setInterval(moveAlien, 350);
 
   /**
   * This makes the ship fire a missile using space key
   */
   function fire(event) {
-    let missileId
-    let missilePosition = shipPosition
+    let missileId;
+    let missilePosition = shipPosition;
 
     function moveMissile() {
       //This if statement solved an infinite loop bug
-      if (!squares[missilePosition]) return
-      squares[missilePosition].classList.remove("missile")
-      missilePosition -= width
-      if (!squares[missilePosition]) return
-      squares[missilePosition].classList.add("missile")
+      if (!squares[missilePosition]) return;
+      squares[missilePosition].classList.remove("missile");
+      missilePosition -= width;
+      if (!squares[missilePosition]) return;
+      squares[missilePosition].classList.add("missile");
 
       if (squares[missilePosition].classList.contains("alien-enemies")) {
-        squares[missilePosition].classList.remove("missile")
-        squares[missilePosition].classList.remove("alien-enemies")
-        squares[missilePosition].classList.add("explosion")
+        squares[missilePosition].classList.remove("missile");
+        squares[missilePosition].classList.remove("alien-enemies");
+        squares[missilePosition].classList.add("explosion");
 
         // Missile stop moving and explosion time is set to 200ms
-        setTimeout(()=> squares[missilePosition].classList.remove("explosion"), 200)
-        clearInterval(missileId)
+        setTimeout(()=> squares[missilePosition].classList.remove("explosion"), 200);
+        clearInterval(missileId);
 
         // Aliens are removed from the square where collision with missile happens
-        const alienDead = aliens.indexOf(missilePosition)
-        aliensDead.push(alienDead)
+        const alienDead = aliens.indexOf(missilePosition);
+        aliensDead.push(alienDead);
 
         // This increments the score with 10 for each enemy defeated
-        score += 10
-        scoreDisplay.innerHTML = score
+        score += 10;
+        scoreDisplay.innerHTML = score;
       }
     }
 
     // When pressing space key, missile is launched, moving one square in 100ms
     switch(event.key) {
       case "ArrowUp":
-        missileId = setInterval(moveMissile, 200)
+        missileId = setInterval(moveMissile, 200);
     }
   }
 
-  document.addEventListener("keydown", fire)
+  document.addEventListener("keydown", fire);
 }
