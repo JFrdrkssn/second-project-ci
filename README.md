@@ -1,108 +1,218 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1 align="center" style="font-size: 250%;"><b>
+RYMD INVADER
+</b></h1>
 
-Welcome JFrdrkssn,
+[Check the live project here!](https://jfrdrkssn.github.io/first-project-ci/index.html)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+RYMD INVADER is a browser game based on the classic arcade game "Space Invaders". The goal is to eliminate the alien invaders by shooting them down with your spaceship. The purpose of the site is to provide a simple game for people to enjoy and spark feelings of nostalgia. Target audience is anyone looking to pass time. It is designed to be played with a keyboard on tablets or larger devices. Loading the page on mobile will provide the user with information on how to play the game.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+---
+## **User Experience (UX)**  
+---  
 
-## Gitpod Reminders
+- ### **User stories**  
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+      - As a User, I want it to be clear that the site is a browser game.
+      - As a User, I want to intuitively understand how to operate the game.
+      - As an Owner, I want the site to be clear and elicit positive emotions to encourage return visits.
 
-`python3 -m http.server`
+- ### **Design**
 
-A blue button should appear to click: _Make Public_,
+    - **Colour Scheme**
 
-Another blue button should appear to click: _Open Browser_.
+        - A dark black and blue background coupled with bright grey, white and gold text provides clear contrast that is also easy on the eyes.
+        - A large, bordered button with light blue and white text at the center of the page give users easy access and a visual cue to start the game.
+        - Enemies are colored green and purple for easy recognition of their affiliation in the game.
+        - Missiles are colored tan with a an orange center and bottom to imitate propulsion.
+        - The player ship has light grey and white colors with a light blue center to imitate glass and orange dots at the bottom to imitate propulsion.
+    
+    - **Typography**
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+        - The Chakra Petch font is used for the game title and button. The font has a modern, almost futuristic, and strong look that lends itself well to the space battle theme.
+        - The Changa font is used for text and score content. It has a similar style to the Chakra Petch font and blends in well without adding too much visual contrast.
+        - Sans-serif is used as a backup-font.
 
-A blue button should appear to click: _Make Public_,
+- ### **Wireframes**
 
-Another blue button should appear to click: _Open Browser_.
+<img src="assets/screenshots/wireframes.webp?raw=true" alt="Wireframes" style="width: 65%;"/>
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+---
+## **Features**
+---
+- **Responsive on all device sizes**
 
-To log into the Heroku toolbelt CLI:
+    - [Am I Responsive?](http://ami.responsivedesign.is/?url=https://jfrdrkssn.github.io/first-project-ci/index.html)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+![Am I Responsive Screenshot](assets/screenshots/amr.webp "Am I Responsive")
 
 ---
 
-Happy coding!
+- **Instructions**
+
+    - At the top of every page on the website, the navigation shows the name of the organization to the left, Handlebar, and it links to the Home page. Navigation links to the other pages on the website can be found to the right, named according to the content on the page.
+    - The navigation links to the right provide feedback when they are the active page and also when hovered on.
+
+![Desktop](assets/screenshots/navbar.png "Navigation Desktop")
+
+---
+
+- **Home page**
+
+    - The Home page main content contains basic information about what the organization can offer and what it does.
+    - The home page has a form with a CTA button to provide users with a way to get in touch with the organization.
+    - The form is easy to understand and provides feedback on input fields and buttons alike.
+
+<img src="assets/screenshots/header.webp?raw=true" alt="Header desktop" style="width: 65%;"/>
+
+---
+
+- **Garage page**
+
+    - The Garage page contains detailed information about the organization's physical garage, storage possibilites and social area.
+    -
+
+
+<img src="assets/screenshots/garage.webp?raw=true" alt="Garage Desktop" style="width: 65%;"/>
+
+---
+
+- **Unfinished features**
+
+- The ability to save scores based on username. It was not implemented because of time restraint.
+- A Top Score list to showcase top players. It was not implemented because of time restraint.
+
+---
+## **Technologies**
+---
+
+### **Languages**
+
+-   [HTML5](https://en.wikipedia.org/wiki/HTML5)
+-   [CSS3](https://en.wikipedia.org/wiki/CSS)
+
+### **Programs**
+1.  [Gitpod](https://gitpod.io)
+    - Gitpod was used to write all code
+2.  [Git](https://git-scm.com/)
+    - Git was used for version control by utilizing the Gitpod terminal to commit Git and Push to GitHub.
+3.  [GitHub](https://github.com/)
+    - GitHub is used to store the projects code after being pushed from Git.
+4.  [Google Fonts](https://fonts.google.com/)
+    - Google fonts were used import the Amatic SC and Barlow Condensed fonts.
+5.  [Font Awesome](https://fontawesome.com/)
+    - Font Awesome was used to style social media links.
+6.  [Online-Convert](https://www.online-convert.com/)
+    - Online convert was used to convert and resize images.
+7.  [TinyPNG](https://tinypng.com/)
+    - TinyPNG was used to compress image files.
+8.  [Balsamiq](https://balsamiq.com/)
+    - Balsamiq was used to create wireframes for design purposes.
+9.  [Contrast Checker](https://webaim.org/resources/contrastchecker/)
+    - Contrast Check was used to confirm that colors had adequate contrast.
+
+---
+## **Testing**
+---
+
+The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+
+- [W3C Markup Validator]() - [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fjfrdrkssn.github.io%2Ffirst-project-ci%2Fride.html)
+- [W3C CSS Validator]() - [Results](http://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fjfrdrkssn.github.io%2Ffirst-project-ci%2Fride.html&profile=css3svg&usermedium=all&warning=1&vextwarning=)
+
+### **Testing User Stories from User Experience (UX) Section**
+
+- **First Time Visitor Goals**
+
+    - As a First Time Visitor, I want to easily recognize the subject of the site.
+        - The background image, logo and text content clearly represents the main site subject is.
+    - As a First Time Visitor, I want to intuitively understand how to navigate throughout the site to find more information.
+        - The navigation at the top of the site provide clear names for different pages and visual feedback to let the user know where they are.
+    - As a First Time Visitor, I want to locate the organization's social media links to familiarize with the organization.
+        - The home page main content follows a clear vertical direction where the user will end up at the bottom where clear icons for social media networks are shown.
+
+- **Returning Visitor Goals**
+
+    - As a Returning Visitor, I want to find information about rides and other events.
+        - The Rides page link in the navigation bar describe where the user will end up clearly.
+    - As a Returning Visitor, I want to find ways to contact the organization.
+        - The Home page has a clear and visible contact form and the bottom of each page contains all other contact information.
+
+- **Frequent User Goals**
+    
+    - As a Frequent User, I want to check for new group rides and events.
+        - The Ride page is updated weekly. This is clearly stated on the Home page.
+
+### **Further Testing**
+
+- The website was tested on Google Chrome and Safari browsers.
+- The website was viewed on Desktop, iPhone 6 and Galaxy S9.
+- Friends and family viewed and tested the site to provide feedback.
+- [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly/result?id=d08keSzbsW3DO75zwF8d-A) was used to test mobile version.
+- Lighthouse was used to test both mobile and desktop versions.
+<img src="assets/screenshots/lighthouse-mobile.png?raw=true" alt="Lighthouse Mobile" style="width: 65%;"/>
+<img src="assets/screenshots/lighthouse-desktop.png?raw=true" alt="Lighthouse Mobile" style="width: 65%;"/>
+
+### **Bugs**
+
+- Navbar didn't stick to the right when changing screen width.
+    - Fix: Replace absolute size values with percentage values for background images.
+- Header logo and navbar stacked on the left side and on top of each other between 764px and 784px.
+    - Fix: Remove padding for navbar a elements and reduce padding by 2px for navbar li elements.
+
+---
+## **Deployment**
+---
+
+### **GitHub Pages**
+
+The project was deployed to GitHub Pages using the following steps...
+
+1. Log in to GitHub and locate the GitHub Repository
+2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
+3. Scroll down the Settings page until you locate "Pages" under the "Code and automation" Section.
+4. Under "Source", click the dropdown called "None" and select "main" branch.
+5. A link to the site will be displayed under the "GitHub Pages" title.
+6. Wait for the background to turn green.
+7. The site is now published!
+
+---
+## **Credits**
+---
+
+### **Code**
+
+- The base code for the project was sourced from [this repository](https://github.com/kubowania/space-invaders/blob/master/app.js), a speed-coding walkthrough project in [Code Institute's](https://codeinstitute.net/) course curriculum.
+
+### **Content**
+
+- The structure and layout of this README.md was based on [this template](https://github.com/Code-Institute-Solutions/SampleREADME) by [Code Institute](https://codeinstitute.net/). Some text was also copied. Additional inspiration for this README.md was given from other templates in Code Institute's course curriculum and from fellow student Patrik Österljung ([GitHub](https://github.com/oljung)).
+
+### **Media**
+
+### **[Sourav Mishra, Pexels](https://www.pexels.com/@photosbymishra)**
+
+[Photo by Sourav Mishra, used on Home page](https://www.pexels.com/photo/city-people-street-graffiti-4515543/)
+
+[Photo by Sourav Mishra, used on Home page for mobile and tablet](https://www.pexels.com/photo/road-street-vehicle-vintage-7511825/)
+
+
+### **[cottonbro, Pexels](https://www.pexels.com/@cottonbro)**
+
+[Photo by cottonbro, used on Garage page](https://www.pexels.com/photo/black-and-gray-audio-mixer-4488660/)
+
+[Photo by cottonbro, used on Garage page for mobile and tablet](https://www.pexels.com/photo/white-and-red-plastic-container-on-black-table-4488651/)
+
+
+### **[Chris Henry, Unsplash](https://unsplash.com/@chrishenryphoto)**
+
+[Photo by Chris Henry, used on Ride page for mobile and tablet](https://unsplash.com/photos/pO6Zu1tRUlA)
+
+### **[Harley-Davidson, Unsplash](https://unsplash.com/@harleydavidson)**
+
+[Photo by Harley-Davidson, used on Ride page](https://unsplash.com/photos/LUWVMSyNsR4)
+
+### **Acknowledgements**
+
+- Ania Kubowa, the original creator of the source code that the game is built upon. [GitHub](https://github.com/kubowania)
+- My Mentor, Gerard McBride, for continuous helpful feedback and support.
+- Fellow student Patrik Österljung, for peer review of code and insightful tips. [GitHub](https://github.com/oljung)
