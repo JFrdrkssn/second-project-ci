@@ -24,6 +24,7 @@ RYMD INVADER is a browser game based on the classic arcade game "Space Invaders"
         - A large, bordered button with light blue and white text at the center of the page give users easy access and a visual cue to start the game.
         - Enemies are colored green and purple for easy recognition of their affiliation in the game.
         - Missiles are colored tan with a an orange center and bottom to imitate propulsion.
+        - Explosions are colored red and orange to emulate fire.
         - The player ship has light grey and white colors with a light blue center to imitate glass and orange dots at the bottom to imitate propulsion.
     
     - **Typography**
