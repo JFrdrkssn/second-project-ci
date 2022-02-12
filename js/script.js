@@ -12,7 +12,7 @@ function menu() {
     grid.removeChild(startBtn);
     startGame();
     winOrLoseDisplay.innerHTML = "RYMD INVASION";
-  })
+  });
 }
 
 /**  The code basis for this game comes from
