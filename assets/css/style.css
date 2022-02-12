@@ -216,11 +216,12 @@ button {
   }
 
   header {
-    font-size: 2em;
+    font-size: 1.8em;
   }
 
   .mobile-info {
     display: inline-block;
+    margin: 20px;
   }
 
   p {
