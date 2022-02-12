@@ -167,7 +167,7 @@ button {
 .score {
   width: 15%;
   flex: initial;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .mobile-info {
@@ -190,7 +190,7 @@ button {
   }
 
   h2 {
-    font-size: 1.5em;
+    font-size: 2em;
     padding: 0;
   }
 }
@@ -200,7 +200,7 @@ button {
 
   .h2,
   .score {
-    font-size: 1.6em;
+    font-size: 1.2em;
     padding: 0;
   }
 }
