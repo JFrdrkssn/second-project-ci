@@ -99,13 +99,16 @@ RYMD INVADER is a browser game based on the classic arcade game "Space Invaders"
 
 Because of time restraint and debugging of source code, these features were planned but never implemented.
 
-- The ability to save scores based on username.
-- A Top Score list to showcase player top scores.
 - More complexity to the scoring feature, like losing points for being hit.
+    -Adding an if statement to the score incrementation to remove points for being hit would accomplish this.
 - A time interval on firing missiles. This would make the game more challenging.
+    - I tried using a timeOut for this, but the missiles would only go slower and slower.
 - Changing the enemy formation and movement speed on a new round after winning the game.
+    - Creating a new array with new positions for enemies and update the interval time for new rounds would accomplish this.
 - The ability for enemies to fire their own missiles.
+    - Adding and adjusting the code for moving missiles and setting a interval on this was the idea.
 - A "lives" feature for the player when hit by enemy fire.
+    - When hit, the player would be redrawn on the grid. When hit 3 times, you would lose.
 
 ---
 ## **Technologies**
@@ -186,6 +189,12 @@ The base JS code is from a speed-coding challenge on [YouTube](https://www.youtu
 ![Enemy bug](assets/screenshots/enemybug.png "Enemy bug")
 - When refactoring the code, some or all elements of the game were either not visible, didn't run and/or didn't loop properly.
     - No fixes. Putting all functions in the global scope and calling them in the startGame() function was unsuccessful. Moving variables, trying to change conditions, creating new variables and restructuring the code introduced more bugs and/or made the game function incorrectly.
+
+### **Additional thoughts**
+
+The scope turned out to be too big for the alloted time I had, 6 days. Writing along helped understand what each thing does and how to implement it. Unfortunately, I feel that I did not showcase my own abilities in writing custom code. The positive side of this is that the debugging process was a very good learning experience. I have commented a lot of the code to showcase my understanding of what it does. I did not copy any code from the source repository. I coded along to see and understand what each code does. The YouTube video does not provide much detail on the code as it is speed-coded.
+
+I hope this is enough for pass.
 
 ---
 ## **Deployment**
